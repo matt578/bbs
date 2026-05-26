@@ -1,0 +1,341 @@
+/* ============================================================
+   DASHBOARD.CSS — Bohol Bicycle Inventory
+   Same design/layout, force normal font, no bold
+   ============================================================ */
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+.dash-wrapper {
+    position: relative; z-index: 1;
+    width: 100%; padding: 2rem 2rem 3rem;
+}
+
+.dash-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.dash-eyebrow {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+    margin-bottom: 6px;
+}
+
+.dash-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 38px;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+.dash-header small {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11px;
+    font-weight: 400 !important;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    margin-top: 5px;
+    display: block;
+}
+
+.dash-header-right { text-align: right; }
+
+.dash-date-label {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.dash-date-value {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 20px;
+    font-weight: 400 !important;
+    letter-spacing: 0;
+    color: var(--text);
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    animation: fadeUp 0.5s ease both;
+}
+
+.kpi-card:nth-child(1) { animation-delay: 0.05s; }
+.kpi-card:nth-child(2) { animation-delay: 0.10s; }
+.kpi-card:nth-child(3) { animation-delay: 0.15s; }
+.kpi-card:nth-child(4) { animation-delay: 0.20s; }
+.kpi-card:nth-child(5) { animation-delay: 0.25s; }
+.kpi-card:nth-child(6) { animation-delay: 0.30s; }
+
+.kpi-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.13); }
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    filter: blur(30px); opacity: 0.5;
+}
+
+.kpi-s1::before { background: var(--accent2); }
+.kpi-s2::before { background: #47ff8a; }
+.kpi-s3::before { background: #b347ff; }
+.kpi-s4::before { background: var(--accent3); }
+.kpi-s5::before { background: #ffd24a; }
+.kpi-s6::before { background: #ff5f7a; }
+
+.kpi-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.kpi-label {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.kpi-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    font-weight: 400 !important;
+    color: #0d0f14;
+}
+
+.kpi-s1 .kpi-icon { background: var(--accent2); }
+.kpi-s2 .kpi-icon { background: #47ff8a; }
+.kpi-s3 .kpi-icon { background: #b347ff; }
+.kpi-s4 .kpi-icon { background: var(--accent3); }
+.kpi-s5 .kpi-icon { background: #ffd24a; }
+.kpi-s6 .kpi-icon { background: #ff5f7a; }
+
+.kpi-value {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 44px;
+    font-weight: 400 !important;
+    letter-spacing: 0;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+.kpi-sub {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.03em;
+}
+
+.chart-section {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1rem;
+    animation: fadeUp 0.5s 0.25s ease both;
+}
+
+.chart-left {
+    background: #0f1628;
+    border: 1px solid rgba(71,200,255,0.12);
+    border-radius: 16px;
+    padding: 1.4rem 1.5rem 1.2rem;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+}
+
+.chart-left::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(71,200,255,0.06);
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.chart-left canvas {
+    width: 100% !important;
+    height: 180px !important;
+    flex-shrink: 0;
+}
+
+.chart-card-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 18px;
+    font-weight: 400 !important;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.chart-canvas-wrap {
+    position: relative;
+    height: 180px;
+}
+
+.chart-left-label {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 17px;
+    font-weight: 400 !important;
+    letter-spacing: 0;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.chart-left-sub {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    color: var(--accent4);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+}
+
+.chart-right {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+}
+
+.chart-right-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.chart-right-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 18px;
+    font-weight: 400 !important;
+    letter-spacing: 0;
+}
+
+.chart-right-sub {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    color: var(--accent4);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+}
+
+.chart-legend {
+    display: flex; align-items: center; gap: 6px;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    font-weight: 400 !important;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+.legend-dot {
+    width: 10px; height: 3px;
+    border-radius: 2px;
+    display: inline-block;
+}
+.dot-stock { background: var(--accent2); }
+.dot-trend { background: rgba(71,200,255,0.35); }
+
+.chart-right-wrap {
+    height: 200px; position: relative;
+}
+
+.chart-right-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1400px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    .chart-section { grid-template-columns: 1fr; }
+    .dash-title { font-size: 28px; }
+}
+
+/* FORCE OVERRIDE */
+body,
+body *,
+.navbar,
+.navbar *,
+.dash-wrapper,
+.dash-wrapper * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}

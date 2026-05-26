@@ -1,0 +1,539 @@
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        :root {
+            --primary-brown: #5A352A;
+            --secondary-brown: #8D6B5E;
+            --blue: #1f0bb8;
+            --light-cream: #F5F0EB;
+            --dark-cream: #EAE2DB;
+            --text-dark: #3E2723;
+            --text-light: #795548;
+            --white: #fff;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --gradient-brown: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
+            --gradient-light: linear-gradient(135deg, var(--light-cream), var(--dark-cream));
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body{
+            height: 100vh;
+            background: var(--body-color);
+
+        }
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background: var(--sidebar-color);
+        }
+        .sidebar header{
+            position: relative;
+        }
+        .sidebar header .toggle{
+            position: absolute;
+            top: 50%;
+            left: -25px;
+            transform: translateY(-50%);
+            height: 25px;
+            width: 25px;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 22px;
+            
+        }
+        .sidebar .image-text img{
+            width: 50px;
+            border-radius: 50%;
+            
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: none; 
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            color: var(--text-dark);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2; 
+            background-size: cover;
+            background-color: var(--primary-brown); 
+        }
+
+      
+        .login-page {
+            width: 100%;
+            max-width: 1000px;
+            min-height: 600px;
+            background: transparent;
+            border-radius: 40px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .login-illustration-section {
+            flex: 1.2;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 40px 0 0 40px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-illustration-section::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -100px;
+            bottom: -50px;
+            width: 300px;
+            background: var(--white);
+            transform: skewX(-10deg);
+            z-index: 0;
+            box-shadow: var(--shadow-md);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .church-logo-section {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            align-self: flex-start;
+        }
+
+        .church-logo-section img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease-in-out;
+            border: 3px solid var(--accent-gold);
+            padding: 2px;
+        }
+
+        .church-logo-section img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .church-logo-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--primary-brown);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* 1 second transition */
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(90, 53, 42, 0.5), rgba(139, 69, 19, 0.5)); /* Reduced transparency */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px; 
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .slide-overlay p {
+            font-size: 15px; 
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .slide-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .dot:hover {
+            background: var(--white);
+            transform: scale(1.1);
+        }
+
+        .dot.active {
+            background: var(--white);
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-text {
+            position: relative;
+            z-index: 1;
+            font-size: 13px;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 50px;
+            align-self: flex-end;
+        }
+
+        .login-form-section {
+            flex: 1;
+            background: rgba(96, 106, 160, 0.6);
+            border-radius: 0 40px 40px 0;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-form-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-cream);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid var(--secondary-brown); 
+            border-radius: 15px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--dark-cream);
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm); 
+        }
+
+        .form-control::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.2), var(--shadow-md); 
+            outline: none;
+            background: var(--light-cream);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 65%;
+            transform: translateY(-50%);
+            color: var(--text-dark); 
+            font-size: 18px;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .form-group:focus-within .input-icon {
+            color: var(--accent-gold);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: blue var(--blue);
+            border: none;
+            border-radius: 15px;
+            color: white var(--white);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-login:hover {
+            background: #DAA520;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        /* Loading Styles */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-cream);
+            border-top: 5px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            color: var(--white);
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn-login.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn-login.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 3px solid var(--light-cream);
+            border-top: 3px solid var(--primary-brown);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .error-message {
+            background: #FECACA;
+            color: #DC2626;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+            border: 1px solid #FCA5A5;
+            color: var(--text-dark);
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .forgot-password, .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .forgot-password a, .register-link a {
+            color: var(--dark-cream);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-password a:hover, .register-link a:hover {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .login-page {
+                flex-direction: column;
+                max-width: 500px;
+                min-height: auto;
+                border-radius: 20px;
+            }
+
+            .login-illustration-section {
+                border-radius: 20px 20px 0 0;
+                padding: 40px 30px;
+            }
+
+            .login-illustration-section::after {
+                display: none;
+            }
+
+            .login-form-section {
+                border-radius: 0 0 20px 20px;
+                padding: 40px 30px;
+            }
+
+            .login-form-section h1 {
+                font-size: 42px;
+            }
+
+            .church-logo-section {
+                margin-bottom: 30px;
+            }
+
+            .slideshow-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+
+            .login-page {
+                border-radius: 15px;
+            }
+
+            .login-illustration-section,
+            .login-form-section {
+                padding: 30px 20px;
+            }
+
+            .login-form-section h1 {
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+
+            .church-logo-section img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .church-logo-section h2 {
+                font-size: 20px;
+            }
+
+            .form-control {
+                padding: 14px 15px 14px 45px;
+                font-size: 15px;
+            }
+
+            .btn-login {
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .slide-overlay h3 {
+                font-size: 32px;
+            }
+
+            .slide-overlay p {
+                font-size: 15px;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }

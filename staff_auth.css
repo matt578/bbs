@@ -1,0 +1,356 @@
+/* ============================================================
+   STAFF_AUTH.CSS — Bohol Bicycle Inventory
+   Shared styles for staff_login.php & staff_signup.php
+   Green accent theme to distinguish from admin (yellow)
+   ============================================================ */
+
+
+:root {
+    --bg:       #0d0f14;
+    --surface:  #141720;
+    --surface2: #1c2030;
+    --border:   rgba(255,255,255,0.1);
+    --accent:   #47ff8a;        /* GREEN — staff accent */
+    --accent-h: #35e874;        /* hover */
+    --accent2:  #47c8ff;
+    --accent3:  #ff6b47;
+    --text:     #f0f2f7;
+    --muted:    #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── VIDEO BG ── */
+#bgVideo {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; z-index: -2;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+body::before {
+    content: ''; position: fixed; inset: 0;
+    background: rgba(10, 12, 20, 0.70);
+    z-index: -1;
+}
+
+/* ── CARD ── */
+.sauth-card {
+    width: 100%; max-width: 440px;
+    background: rgba(15, 20, 30, 0.94);
+    border: 1px solid rgba(71,255,138,0.15);
+    border-radius: 22px;
+    padding: 2.25rem 2.25rem 1.75rem;
+    box-shadow:
+        0 0 0 1px rgba(71,255,138,0.06),
+        0 24px 60px rgba(0,0,0,0.65),
+        0 0 80px rgba(71,255,138,0.05);
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STAFF BADGE ── */
+.staff-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent);
+    background: rgba(71,255,138,0.08);
+    border: 1px solid rgba(71,255,138,0.2);
+    padding: 5px 12px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.4s 0.1s ease both;
+}
+
+.staff-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+/* ── BRAND ── */
+.sauth-brand {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 8px;
+    margin-bottom: 1.75rem;
+}
+
+.sauth-logo {
+    width: 76px; height: 76px;
+    border-radius: 50%; object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(71,255,138,0.25));
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.sauth-logo:hover {
+    transform: scale(1.06) rotate(4deg);
+    filter: drop-shadow(0 0 22px rgba(71,255,138,0.45));
+}
+
+.sauth-title {
+    font-size: 21px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em; text-align: center;
+}
+
+.sauth-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); text-align: center;
+}
+
+/* ── ALERTS ── */
+.salert {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    padding: 9px 14px; border-radius: 8px;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.3s ease both;
+}
+
+.salert-success { background: rgba(71,255,138,0.10); border: 1px solid rgba(71,255,138,0.3); color: var(--accent); }
+.salert-error   { background: rgba(255,107,71,0.12); border: 1px solid rgba(255,107,71,0.3); color: var(--accent3); }
+.salert-icon    { font-size: 13px; flex-shrink: 0; }
+
+/* ── FIELDS ── */
+.sfield-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
+
+.sfield-wrap { display: flex; flex-direction: column; }
+
+.sfield-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted);
+    margin-bottom: 5px; transition: color 0.2s;
+}
+
+.sfield-wrap:focus-within .sfield-label { color: var(--accent); }
+
+.sfield-input {
+    width: 100%; padding: 11px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: var(--text);
+    font-family: 'Syne', sans-serif; font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.sfield-input::placeholder { color: #4b5563; }
+
+.sfield-input:focus {
+    border-color: rgba(71,255,138,0.5);
+    background: rgba(71,255,138,0.03);
+    box-shadow: 0 0 0 3px rgba(71,255,138,0.06);
+}
+
+.sfield-input.input-error  { border-color: rgba(255,107,71,0.5); }
+.sfield-input.input-success { border-color: rgba(71,255,138,0.4); }
+
+/* Password wrap */
+.spass-wrap { position: relative; }
+.spass-wrap .sfield-input { padding-right: 44px; }
+.stoggle-pass {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); font-size: 16px; padding: 2px;
+    transition: color 0.2s; line-height: 1;
+}
+.stoggle-pass:hover { color: var(--accent); }
+
+/* Field error text */
+.sfield-error {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--accent3);
+    margin-top: 4px; letter-spacing: 0.04em; display: none;
+}
+.sfield-error.visible { display: block; }
+
+/* ── STRENGTH BARS ── */
+.sstrength-wrap { display: flex; gap: 4px; margin-top: 6px; }
+.sstrength-bar {
+    flex: 1; height: 3px; border-radius: 2px;
+    background: rgba(255,255,255,0.08);
+    transition: background 0.3s;
+}
+.sstrength-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.06em;
+    color: var(--muted); margin-top: 4px; transition: color 0.3s;
+}
+
+/* ── DIVIDER ── */
+.sdivider {
+    display: flex; align-items: center; gap: 10px; margin: 1rem 0;
+}
+.sdivider hr { flex: 1; border: none; border-top: 1px solid rgba(255,255,255,0.07); }
+.sdivider span {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: #4b5563; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ── LOGIN BUTTON (green) ── */
+.sbtn-login {
+    width: 100%; padding: 12px; border-radius: 10px; border: none;
+    background: var(--accent); color: #0d0f14;
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.02em; cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(71,255,138,0.25);
+    position: relative; overflow: hidden;
+}
+.sbtn-login:hover {
+    background: var(--accent-h); transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(71,255,138,0.35);
+}
+.sbtn-login:active  { transform: translateY(0); }
+.sbtn-login:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Spinner */
+.sbtn-spinner {
+    display: none; width: 16px; height: 16px;
+    border: 2px solid rgba(13,15,20,0.3);
+    border-top-color: #0d0f14; border-radius: 50%;
+    animation: spin 0.6s linear infinite; margin: 0 auto;
+}
+.sbtn-login.loading .sbtn-text    { display: none; }
+.sbtn-login.loading .sbtn-spinner { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FACEBOOK BUTTON ── */
+.sbtn-facebook {
+    width: 100%; padding: 12px; border-radius: 10px;
+    border: 1px solid rgba(24,119,242,0.45);
+    background: rgba(24,119,242,0.10); color: #6ba8f7;
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 8px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.sbtn-facebook:hover {
+    background: rgba(24,119,242,0.20); border-color: rgba(24,119,242,0.8);
+    color: #93bfff; transform: translateY(-1px);
+}
+.sfb-icon { font-size: 16px; font-weight: 800; color: #1877f2; }
+
+/* ── FOOTER LINKS ── */
+.sauth-footer {
+    margin-top: 1.25rem; text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.04em;
+}
+.sauth-footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.sauth-footer a:hover { color: var(--accent-h); text-decoration: underline; }
+
+/* ── TERMS ── */
+.sterms {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: #4b5563; text-align: center;
+    letter-spacing: 0.03em; margin-bottom: 1.25rem; line-height: 1.6;
+}
+
+/* ── BACK TO HOME ── */
+.sbtn-back {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 1rem; width: 100%; padding: 10px;
+    border-radius: 10px; border: 1px solid rgba(71,255,138,0.12);
+    background: transparent; color: var(--muted);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+}
+.sbtn-back:hover {
+    background: rgba(71,255,138,0.06);
+    border-color: rgba(71,255,138,0.25);
+    color: var(--accent); text-decoration: none;
+}
+.sfield-error {
+    color: #ff4d4f;
+    font-size: 12px;
+    margin-top: 6px;
+    min-height: 18px;
+    display: block;
+    font-weight: 500;
+    text-shadow: 0 0 6px rgba(255, 77, 79, 0.25);
+}
+
+.input-error {
+    border: 1px solid #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.12) !important;
+}
+
+.salert {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.salert-error {
+    background: rgba(255, 77, 79, 0.12);
+    border: 1px solid rgba(255, 77, 79, 0.65);
+    color: #ff6b6b;
+}
+
+.salert-success {
+    background: rgba(46, 204, 113, 0.12);
+    border: 1px solid rgba(46, 204, 113, 0.65);
+    color: #4df08a;
+}
+/* =========================
+   FINAL FONT FORCE OVERRIDE
+   Put this at the VERY BOTTOM
+   ========================= */
+
+html,
+body,
+body *,
+body *::before,
+body *::after,
+input,
+button,
+select,
+textarea,
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+a,
+span,
+small,
+label,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+b,
+strong {
+    font-weight: 400 !important;
+}

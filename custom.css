@@ -1,0 +1,134 @@
+/* custom.css - small layout tweaks */
+.sidebar {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, #adafdd 0%, #96c5f4 100%) !important;
+}
+.table-img {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #6c7ac5;
+}
+
+.sidebar-menu .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #090909;
+  background: transparent;
+  transition: 0.25s ease-in-out;
+}
+
+.sidebar-menu .nav-link i {
+  font-size: 18px;
+}
+
+.sidebar-menu .nav-link:hover {
+  background: #4e7592;
+  transform: translateX(6px);
+  color: #007bff;
+}
+
+.sidebar-menu .nav-link.active {
+  background: #04a9ff;
+  color: #4b26ee !important;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(4, 169, 255, 0.3);
+}
+/* ===== CONTENT CARD (dashboard / main area) ===== */
+.content-card {
+ background: linear-gradient(180deg, #adafdd 0%, #96c5f4 100%) !important;
+  border-radius: 14px !important;
+  padding: 22px !important;
+  box-shadow: 0 10px 30px rgba(20, 40, 80, 0.06) !important;
+  border: 1px solid rgba(20,40,80,0.04) !important;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* small lift on hover so it's more "card-like" */
+.content-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(20,40,80,0.10);
+}
+
+/* ensure the column using content-card stretches full height nicely */
+main .content-card {
+  min-height: 60vh;
+}
+
+/* If your page has table inside, make it visually fit inside the card */
+.content-card .table-container,
+.content-card .table-responsive {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* header inside the card */
+.content-card .card-header-like {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+/* === INVENTORY TABLE CARD DESIGN === */
+
+.inventory-table table {
+    border-collapse: separate !important;
+    border-spacing: 0 15px !important;
+}
+
+.inventory-table tbody tr {
+    background: transparent !important;
+    border: none !important;
+}
+
+.inventory-table tbody tr td {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Card-style container for each row */
+.table-card {
+    background: linear-gradient(90deg, #fafafa, #ffffff);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.2s ease;
+}
+
+.table-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.14);
+}
+
+/* Inside card cells */
+.table-card .cell {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Image styling */
+.table-card img {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Edit / Archive buttons */
+.table-card .actions {
+    display: flex;
+    gap: 8px;
+}

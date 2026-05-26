@@ -1,0 +1,383 @@
+/* ============================================================
+   AUTH.CSS — Bohol Bicycle Inventory (Admin Portal)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── VIDEO BG ── */
+#bgVideo {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; z-index: -2;
+}
+
+body::before {
+    content: ''; position: fixed; inset: 0;
+    background: rgba(10, 12, 20, 0.65);
+    z-index: -1;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+/* ── CARD ── */
+.auth-card {
+    width: 100%; max-width: 440px;
+    background: rgba(15, 20, 30, 0.94);
+    border: 1px solid rgba(232, 255, 71, 0.15);
+    border-radius: 22px;
+    padding: 2.25rem 2.25rem 1.75rem;
+    box-shadow:
+        0 0 0 1px rgba(232, 255, 71, 0.06),
+        0 24px 60px rgba(0, 0, 0, 0.65),
+        0 0 80px rgba(232, 255, 71, 0.05);
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── ADMIN PORTAL BADGE ── */
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #b600f8;
+    background: rgba(232, 255, 71, 0.08);
+    border: 1px solid rgb(164, 5, 226);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.admin-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #8504ee;
+    animation: adminBlink 2s ease-in-out infinite;
+}
+
+@keyframes adminBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
+/* ── BRAND ── */
+.auth-brand {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 8px;
+    margin-bottom: 1.75rem;
+}
+
+.auth-logo {
+    width: 76px; height: 76px;
+    border-radius: 50%; object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(191, 71, 255, 0.25));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.auth-logo:hover {
+    transform: scale(1.06) rotate(4deg);
+    filter: drop-shadow(0 0 22px rgba(151, 71, 255, 0.45));
+}
+
+.auth-title {
+    font-size: 22px; font-weight: 800;
+    color: #f0f2f7; letter-spacing: -0.02em; text-align: center;
+}
+
+.auth-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #6b7280; text-align: center;
+}
+
+/* ── ALERTS ── */
+.alert {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    padding: 9px 14px; border-radius: 8px;
+    margin-bottom: 1.25rem; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    animation: fadeUp 0.3s ease both;
+}
+
+.alert-error {
+    background: rgba(255, 107, 71, 0.12);
+    border: 1px solid rgba(255, 107, 71, 0.3);
+    color: #ff6b47;
+}
+
+.alert-success {
+    background: rgba(71, 255, 138, 0.10);
+    border: 1px solid rgba(71, 255, 138, 0.3);
+    color: #47ff8a;
+}
+
+.alert-success a { color: #e8ff47; text-decoration: underline; }
+.alert-icon { font-size: 14px; flex-shrink: 0; }
+
+/* ── FORM FIELDS ── */
+.field-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
+
+.field-wrap { position: relative; }
+
+.field-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #6b7280;
+    margin-bottom: 5px; display: block;
+    transition: color 0.2s;
+}
+
+.field-wrap:focus-within .field-label { color: #e8ff47; }
+
+.field-input {
+    width: 100%; padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px; color: #f0f2f7;
+    font-family: 'Syne', sans-serif; font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.field-input::placeholder { color: #4b5563; }
+
+.field-input:focus {
+    border-color: rgba(232, 255, 71, 0.5);
+    background: rgba(232, 255, 71, 0.04);
+    box-shadow: 0 0 0 3px rgba(232, 255, 71, 0.06);
+}
+
+.field-input.input-error  { border-color: rgba(255, 107, 71, 0.5); background: rgba(255, 107, 71, 0.04); }
+.field-input.input-success { border-color: rgba(71, 255, 138, 0.4); }
+
+/* Password toggle */
+.pass-wrap { position: relative; }
+.pass-wrap .field-input { padding-right: 44px; }
+
+.toggle-pass {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    color: #6b7280; font-size: 16px; padding: 2px;
+    transition: color 0.2s; line-height: 1;
+}
+.toggle-pass:hover { color: #e8ff47; }
+
+/* Field error text */
+.field-error-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: #ff6b47;
+    margin-top: 4px; letter-spacing: 0.04em; display: none;
+}
+.field-error-text.visible { display: block; }
+
+/* ── STRENGTH BARS (signup) ── */
+.strength-wrap { display: flex; gap: 4px; margin-top: 6px; }
+.strength-bar {
+    flex: 1; height: 3px; border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.3s ease;
+}
+.strength-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.06em;
+    color: #6b7280; margin-top: 4px;
+}
+
+/* ── DIVIDER ── */
+.divider { display: flex; align-items: center; gap: 10px; margin: 1rem 0; }
+.divider hr { flex: 1; border: none; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+.divider span {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: #4b5563; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* ── PRIMARY BUTTON (yellow for admin) ── */
+.btn-primary {
+    width: 100%; padding: 12px; border-radius: 10px; border: none;
+    background: #b847ff; color: #0d0f14;
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.02em; cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(232, 255, 71, 0.25);
+    position: relative; overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: #d4eb30; transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(232, 255, 71, 0.35);
+}
+.btn-primary:active { transform: translateY(0); box-shadow: 0 2px 10px rgba(232, 255, 71, 0.2); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* Spinner */
+.btn-spinner {
+    display: none; width: 16px; height: 16px;
+    border: 2px solid rgba(13, 15, 20, 0.3);
+    border-top-color: #0d0f14; border-radius: 50%;
+    animation: spin 0.6s linear infinite; margin: 0 auto;
+}
+.btn-primary.loading .btn-text    { display: none; }
+.btn-primary.loading .btn-spinner { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FACEBOOK BUTTON ── */
+.btn-facebook {
+    width: 100%; padding: 12px; border-radius: 10px;
+    border: 1px solid rgba(24, 119, 242, 0.5);
+    background: rgba(24, 119, 242, 0.12); color: #6ba8f7;
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 8px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.btn-facebook:hover {
+    background: rgba(24, 119, 242, 0.22);
+    border-color: rgba(24, 119, 242, 0.8);
+    color: #93bfff; transform: translateY(-1px);
+}
+.fb-icon { font-size: 16px; font-weight: 800; color: #1877f2; }
+
+/* ── FOOTER LINK ── */
+.auth-footer {
+    margin-top: 1.25rem; text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: #6b7280; letter-spacing: 0.04em;
+}
+.auth-footer a { color: #e8ff47; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.auth-footer a:hover { color: #d4eb30; text-decoration: underline; }
+
+/* ── TERMS NOTE (signup) ── */
+.terms-note {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: #4b5563; text-align: center;
+    letter-spacing: 0.03em; margin-bottom: 1.25rem; line-height: 1.6;
+}
+
+/* ── BACK TO HOME — full width bordered button ── */
+.btn-back-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid rgba(232, 255, 71, 0.15);
+    background: transparent;
+    color: #6b7280;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-back-home:hover {
+    background: rgba(175, 71, 255, 0.07);
+    border-color: rgba(178, 71, 255, 0.3);
+    color: #ac47ff;
+    text-decoration: none;
+}
+.field-error-text {
+    display: block !important;
+    width: 100%;
+    min-height: 18px;
+    margin-top: 6px;
+    color: #ff4d4f !important;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.field-error-text:empty {
+    min-height: 18px;
+}
+
+.input-error {
+    border: 1.5px solid #ff4d4f !important;
+}
+.field-error-text {
+    display: block !important;
+    width: 100%;
+    min-height: 18px;
+    margin-top: 6px;
+    color: #ff4d4f !important;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.field-error-text:empty {
+    min-height: 18px;
+}
+
+.input-error {
+    border: 1.5px solid #ff4d4f !important;
+}
+.field-error-text {
+    display: block !important;
+    width: 100%;
+    min-height: 18px;
+    margin-top: 6px;
+    color: #ff4d4f !important;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.field-error-text:empty {
+    min-height: 18px;
+}
+
+.input-error {
+    border: 1.5px solid #ff4d4f !important;
+    box-shadow: none !important;
+}
+
+.pass-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pass-wrap .field-input {
+    width: 100%;
+    padding-right: 42px;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #cfcfcf;
+    z-index: 2;
+}

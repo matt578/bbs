@@ -1,0 +1,271 @@
+/* ============================================================
+   REPORT_SHARED.CSS — Bohol Bicycle Inventory
+   Shared by: report_sales, report_inventory, report_suppliers
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; padding-top: 70px;
+}
+
+body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+/* ── WRAPPER ── */
+.rpt-wrapper { position: relative; z-index: 1; width: 100%; padding: 2rem 2rem 3rem; }
+
+/* ── PAGE HEADER ── */
+.rpt-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px; padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.rpt-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent2); margin-bottom: 6px;
+}
+
+.rpt-title { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+
+.rpt-header small {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.05em;
+    margin-top: 5px; display: block;
+}
+
+.rpt-header-right { text-align: right; }
+
+.rpt-total-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px;
+}
+
+.rpt-total-value { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+
+/* ── MAIN CARD ── */
+.rpt-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    animation: fadeUp 0.4s 0.05s ease both;
+}
+
+/* ── TOOLBAR ── */
+.rpt-toolbar {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+
+.rpt-card-title {
+    font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.rpt-count {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    background: rgba(232,255,71,0.12); border: 1px solid rgba(232,255,71,0.25);
+    color: var(--accent); padding: 3px 10px; border-radius: 20px;
+    letter-spacing: 0.06em; font-weight: 400;
+}
+
+.toolbar-right { display: flex; align-items: center; gap: 10px; }
+
+/* Filter form */
+.filter-form {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.filter-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+}
+.filter-input {
+    height: 38px; padding: 0 12px; width: 120px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    outline: none; transition: border-color 0.2s;
+    -moz-appearance: textfield;
+}
+.filter-input::-webkit-outer-spin-button,
+.filter-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.filter-input:focus { border-color: rgba(232,255,71,0.5); }
+
+.btn-apply {
+    height: 38px; padding: 0 16px; border-radius: 8px; border: none;
+    background: var(--accent4); color: #0d0f14;
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: background 0.2s;
+}
+.btn-apply:hover { background: #35e874; }
+
+.btn-reset {
+    height: 38px; padding: 0 16px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1); background: transparent;
+    color: var(--muted); font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    text-decoration: none; display: flex; align-items: center;
+    transition: all 0.2s;
+}
+.btn-reset:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+
+.low-badge {
+    background: rgba(255,107,71,0.12); border: 1px solid rgba(255,107,71,0.3);
+    color: var(--accent3); font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 5px 12px; border-radius: 20px;
+    letter-spacing: 0.05em;
+}
+
+/* Print button */
+.btn-print {
+    height: 38px; padding: 0 18px; border-radius: 8px; border: none;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text); font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.btn-print:hover { background: rgba(255,255,255,0.12); }
+
+/* ── DIVIDER ── */
+.rpt-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+/* ── TABLE ── */
+.rpt-table-wrap { overflow-x: auto; }
+
+.rpt-table { width: 100%; border-collapse: collapse; }
+
+.rpt-table thead th {
+    font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); padding: 10px 1rem;
+    background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border);
+    font-weight: 400; white-space: nowrap; text-align: left;
+}
+.rpt-table thead th.text-right  { text-align: right; }
+.rpt-table thead th.text-center { text-align: center; }
+
+.rpt-table tbody td {
+    padding: 12px 1rem; font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle; color: var(--text);
+}
+.rpt-table tbody td.text-right  { text-align: right; }
+.rpt-table tbody td.text-center { text-align: center; }
+.rpt-table tbody tr:last-child td { border-bottom: none; }
+.rpt-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+/* Low stock row */
+.row-low { background: rgba(255,107,71,0.06) !important; }
+.row-low:hover { background: rgba(255,107,71,0.1) !important; }
+
+/* Cells */
+.td-id      { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+.td-date    { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.td-name    { font-weight: 600; }
+.td-muted   { color: var(--muted); font-size: 12px; }
+.td-mono    { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent2); }
+.td-email   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+.td-barcode { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+.td-price   { font-family: 'DM Mono', monospace; font-weight: 700; color: var(--accent2); }
+.td-payment { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+.td-change  { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent4); }
+
+/* Items list */
+.items-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.items-list li { font-size: 12px; color: var(--text); }
+.td-muted   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+
+/* Category pill */
+.cat-pill {
+    display: inline-block; padding: 3px 9px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em;
+    background: rgba(71,200,255,0.1); border: 1px solid rgba(71,200,255,0.2);
+    color: var(--accent2);
+}
+
+/* Qty badge */
+.qty-badge {
+    display: inline-block; padding: 3px 12px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600;
+}
+.qty-ok  { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--text); }
+.qty-low { background: rgba(255,107,71,0.15); border: 1px solid rgba(255,107,71,0.35); color: var(--accent3); }
+
+/* Status badge */
+.status-badge {
+    display: inline-block; padding: 4px 10px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-weight: 600; letter-spacing: 0.08em;
+}
+.status-ok  { background: rgba(71,255,138,0.1); border: 1px solid rgba(71,255,138,0.25); color: var(--accent4); }
+.status-low { background: rgba(255,107,71,0.12); border: 1px solid rgba(255,107,71,0.3); color: var(--accent3); }
+
+/* Grand total strip */
+.rpt-total-strip {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, rgba(71,200,255,0.12), rgba(71,200,255,0.04));
+    border: 1px solid rgba(71,200,255,0.2); border-radius: 10px;
+    padding: 12px 1rem; margin-top: 1rem;
+}
+.total-strip-label { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); }
+.total-strip-value { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 800; color: var(--text); }
+
+/* Empty row */
+.td-empty { text-align: center !important; padding: 3.5rem 1rem !important; }
+.empty-icon { font-size: 32px; opacity: 0.2; display: block; margin-bottom: 10px; }
+.empty-text { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff !important; padding-top: 0; }
+    body::before { display: none; }
+    .rpt-wrapper { padding: 1rem; }
+    .rpt-header {
+        background: #1e3c72 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border: none;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    .rpt-card { background: #fff; border: 1px solid #e5e7eb; box-shadow: none; }
+    .rpt-table thead th { background: #111827 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .rpt-table tbody td { color: #111827; border-bottom: 1px solid #e5e7eb; }
+    .row-low { background: #fef2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .td-price, .td-payment, .td-change, .td-mono { color: #111827 !important; }
+    .rpt-total-strip { background: #eff6ff !important; border: 1px solid #bfdbfe; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .total-strip-label, .total-strip-value { color: #1e40af !important; }
+}

@@ -1,0 +1,265 @@
+/* ============================================================
+   SALES_ORDER.CSS — Bohol Bicycle Inventory
+   Matches Dashboard normal font
+   ============================================================ */
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, body * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+.so-wrapper {
+    position: relative; z-index: 1;
+    width: 100%; padding: 2rem 2rem 3rem;
+}
+
+.so-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px; padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.so-eyebrow {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 6px;
+}
+
+.so-title {
+    font-size: 30px;
+    font-weight: 400 !important;
+    letter-spacing: -0.03em; line-height: 1; color: var(--text);
+}
+
+.so-header small {
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 5px; display: block;
+}
+
+.so-header-right { text-align: right; }
+
+.so-date-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px;
+}
+
+.so-date-value {
+    font-size: 18px; font-weight: 400 !important;
+    letter-spacing: -0.02em; color: var(--text);
+}
+
+.so-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    animation: fadeUp 0.4s 0.05s ease both;
+}
+
+.so-toolbar {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+
+.so-card-title { font-size: 17px; font-weight: 400 !important; letter-spacing: -0.01em; }
+
+.so-card-sub {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 4px;
+}
+
+.so-card-sub span { color: var(--accent); font-weight: 400 !important; }
+
+.so-toolbar-right { display: flex; align-items: center; gap: 10px; }
+
+.so-search {
+    height: 42px; padding: 0 14px; min-width: 280px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: var(--text);
+    font-size: 13px;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.so-search::placeholder { color: #4b5563; }
+.so-search:focus { border-color: rgba(232,255,71,0.5); background: rgba(232,255,71,0.03); }
+
+.so-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+.so-table-wrap { overflow-x: auto; }
+.so-table { width: 100%; border-collapse: collapse; }
+
+.so-table thead th {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); padding: 10px 1rem;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid var(--border);
+    font-weight: 400 !important; white-space: nowrap; text-align: left;
+}
+.so-table thead th.text-right  { text-align: right; }
+.so-table thead th.text-center { text-align: center; }
+
+.so-table tbody td {
+    padding: 13px 1rem; font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle; color: var(--text);
+    font-weight: 400 !important;
+}
+.so-table tbody td.text-right  { text-align: right; }
+.so-table tbody td.text-center { text-align: center; }
+.so-table tbody tr:last-child td { border-bottom: none; }
+.so-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.td-code {
+    font-weight: 400 !important; font-size: 12px;
+    color: var(--accent); letter-spacing: 0.05em;
+}
+
+.td-date {
+    font-size: 11px; color: var(--muted);
+}
+
+.td-price {
+    font-weight: 400 !important; color: var(--accent2);
+}
+
+.items-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 3px;
+}
+
+.items-list li {
+    font-size: 12px; color: var(--text); line-height: 1.4;
+}
+
+.item-qty {
+    font-size: 10px; color: var(--muted);
+}
+
+.td-empty-inline {
+    font-size: 11px; color: var(--muted);
+}
+
+.cat-pill {
+    display: inline-block;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 10px; font-weight: 400 !important; letter-spacing: 0.05em;
+    background: rgba(71,200,255,0.1);
+    border: 1px solid rgba(71,200,255,0.2);
+    color: var(--accent2);
+}
+
+.qty-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text);
+    font-size: 12px; font-weight: 400 !important;
+    padding: 3px 12px; border-radius: 20px;
+}
+
+.btn-invoice {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 34px; padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(71,200,255,0.35);
+    background: rgba(71,200,255,0.08);
+    color: var(--accent2);
+    font-size: 12px; font-weight: 400 !important;
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+}
+.btn-invoice:hover {
+    background: rgba(71,200,255,0.18);
+    border-color: var(--accent2);
+    color: var(--accent2);
+    transform: translateY(-1px);
+}
+
+.td-empty { text-align: center !important; padding: 3.5rem 1rem !important; }
+.empty-icon { font-size: 32px; opacity: 0.2; display: block; margin-bottom: 10px; }
+.empty-text { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .so-toolbar { flex-direction: column; }
+    .so-search  { min-width: 100%; width: 100%; }
+}
+/* =========================
+   FINAL FONT FORCE OVERRIDE
+   Put this at the VERY BOTTOM
+   ========================= */
+
+html,
+body,
+body *,
+body *::before,
+body *::after,
+input,
+button,
+select,
+textarea,
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+a,
+span,
+small,
+label,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+b,
+strong {
+    font-weight: 400 !important;
+}

@@ -1,0 +1,218 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --text: #111827;
+    --card: #ffffff;
+    --card-border: #dbe2ea;
+    --input-bg: #ffffff;
+    --input-border: #cfd8e3;
+    --muted: #6b7280;
+    --button-bg: #d8f24a;
+    --button-text: #111827;
+    --header-bg: linear-gradient(135deg, #eaf2ff, #ffffff);
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+    --error-bg: #fee2e2;
+    --error-text: #991b1b;
+}
+
+body.theme-dark {
+    --bg: #050816;
+    --text: #f3f4f6;
+    --card: #081127;
+    --card-border: #172554;
+    --input-bg: #0d1833;
+    --input-border: #1e2d52;
+    --muted: #94a3b8;
+    --button-bg: #d8f24a;
+    --button-text: #111827;
+    --header-bg: linear-gradient(135deg, #0b1a4a, #09122e);
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --success-bg: #052e16;
+    --success-text: #86efac;
+    --error-bg: #450a0a;
+    --error-text: #fca5a5;
+}
+
+.as-wrapper {
+    padding: 30px;
+    min-height: 100vh;
+    background: var(--bg);
+}
+
+.as-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: var(--header-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+}
+
+.as-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #38bdf8;
+    margin-bottom: 12px;
+}
+
+.as-title {
+    margin: 0 0 8px;
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+.as-header small,
+.as-date-label {
+    color: var(--muted);
+}
+
+.as-date-value {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.as-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.as-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.as-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.as-info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.as-info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.as-info-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.as-info-value {
+    font-weight: 500;
+    text-align: right;
+}
+
+.as-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.as-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.as-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.as-input {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text);
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.as-input:focus {
+    border-color: #38bdf8;
+}
+
+.as-btn {
+    border: none;
+    border-radius: 16px;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    background: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(216, 242, 74, 0.25);
+}
+
+.as-btn:hover {
+    opacity: 0.95;
+}
+
+.as-alert {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+.as-alert-success {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.as-alert-error {
+    background: var(--error-bg);
+    color: var(--error-text);
+}
+
+@media (max-width: 900px) {
+    .as-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .as-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .as-title {
+        font-size: 36px;
+    }
+}

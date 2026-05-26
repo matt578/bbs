@@ -1,0 +1,371 @@
+/* ============================================================
+   REPORTS.CSS — Bohol Bicycle Inventory
+   Matches POS / Dashboard / Inventory / Sales / Suppliers theme
+   ============================================================ */
+
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; padding-top: 70px;
+}
+
+body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+/* ── WRAPPER ── */
+.rpt-wrapper { position: relative; z-index: 1; width: 100%; padding: 2rem 2rem 3rem; }
+
+/* ── PAGE HEADER ── */
+.rpt-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px; padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.rpt-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent2); margin-bottom: 6px;
+}
+
+.rpt-title { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+
+.rpt-header small {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.05em;
+    margin-top: 5px; display: block;
+}
+
+.rpt-header-right { text-align: right; }
+
+.rpt-date-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 4px;
+}
+
+.rpt-date-value { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── GRID ── */
+.rpt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+/* ── REPORT CARD ── */
+.rpt-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    text-decoration: none; color: var(--text);
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.5s ease both;
+}
+
+.rpt-card:nth-child(1) { animation-delay: 0.05s; }
+.rpt-card:nth-child(2) { animation-delay: 0.10s; }
+.rpt-card:nth-child(3) { animation-delay: 0.15s; }
+
+.rpt-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    text-decoration: none; color: var(--text);
+}
+
+/* Glow blob per card */
+.rpt-card::before {
+    content: ''; position: absolute;
+    top: -20px; right: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%; filter: blur(40px); opacity: 0.35;
+    transition: opacity 0.3s;
+}
+.rpt-sales::before    { background: var(--accent2); }
+.rpt-inventory::before{ background: var(--accent4); }
+.rpt-supplier::before { background: var(--accent3); }
+
+.rpt-card:hover::before { opacity: 0.55; }
+
+/* Hover border accent */
+.rpt-sales:hover    { border-color: rgba(71,200,255,0.35); }
+.rpt-inventory:hover{ border-color: rgba(71,255,138,0.35); }
+.rpt-supplier:hover { border-color: rgba(255,107,71,0.35); }
+
+/* Icon */
+.rpt-card-icon { font-size: 36px; line-height: 1; }
+
+/* Body */
+.rpt-card-body { flex: 1; }
+
+.rpt-card-title {
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 8px;
+}
+
+.rpt-card-desc {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.04em; line-height: 1.7;
+}
+
+/* Footer button */
+.rpt-card-footer { margin-top: auto; }
+
+.rpt-btn {
+    display: block; width: 100%;
+    padding: 12px 16px; border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700;
+    text-align: center; letter-spacing: 0.02em;
+    transition: all 0.2s;
+}
+
+/* Sales — cyan */
+.rpt-btn-sales {
+    background: rgba(71,200,255,0.12);
+    border: 1px solid rgba(71,200,255,0.3);
+    color: var(--accent2);
+}
+.rpt-sales:hover .rpt-btn-sales {
+    background: rgba(71,200,255,0.22);
+    border-color: var(--accent2);
+}
+
+/* Inventory — green */
+.rpt-btn-inventory {
+    background: rgba(71,255,138,0.10);
+    border: 1px solid rgba(71,255,138,0.3);
+    color: var(--accent4);
+}
+.rpt-inventory:hover .rpt-btn-inventory {
+    background: rgba(71,255,138,0.2);
+    border-color: var(--accent4);
+}
+
+/* Supplier — orange-red */
+.rpt-btn-supplier {
+    background: rgba(255,107,71,0.10);
+    border: 1px solid rgba(255,107,71,0.3);
+    color: var(--accent3);
+}
+.rpt-supplier:hover .rpt-btn-supplier {
+    background: rgba(255,107,71,0.2);
+    border-color: var(--accent3);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) { .rpt-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .rpt-title { font-size: 24px; } }/* ============================================================
+   REPORTS.CSS — Bohol Bicycle Inventory
+   Matches Dashboard normal font
+   ============================================================ */
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, body * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+body {
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; padding-top: 70px;
+}
+
+body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+.rpt-wrapper { position: relative; z-index: 1; width: 100%; padding: 2rem 2rem 3rem; }
+
+.rpt-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px; padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.rpt-eyebrow {
+    font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent2); margin-bottom: 6px;
+}
+
+.rpt-title { font-size: 30px; font-weight: 400 !important; letter-spacing: -0.03em; line-height: 1; }
+
+.rpt-header small {
+    font-size: 11px;
+    color: var(--muted); letter-spacing: 0.05em;
+    margin-top: 5px; display: block;
+}
+
+.rpt-header-right { text-align: right; }
+
+.rpt-date-label {
+    font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 4px;
+}
+
+.rpt-date-value { font-size: 18px; font-weight: 400 !important; letter-spacing: -0.02em; }
+
+.rpt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.rpt-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    text-decoration: none; color: var(--text);
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.5s ease both;
+}
+
+.rpt-card:nth-child(1) { animation-delay: 0.05s; }
+.rpt-card:nth-child(2) { animation-delay: 0.10s; }
+.rpt-card:nth-child(3) { animation-delay: 0.15s; }
+
+.rpt-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    text-decoration: none; color: var(--text);
+}
+
+.rpt-card::before {
+    content: ''; position: absolute;
+    top: -20px; right: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%; filter: blur(40px); opacity: 0.35;
+    transition: opacity 0.3s;
+}
+.rpt-sales::before    { background: var(--accent2); }
+.rpt-inventory::before{ background: var(--accent4); }
+.rpt-supplier::before { background: var(--accent3); }
+
+.rpt-card:hover::before { opacity: 0.55; }
+
+.rpt-sales:hover    { border-color: rgba(71,200,255,0.35); }
+.rpt-inventory:hover{ border-color: rgba(71,255,138,0.35); }
+.rpt-supplier:hover { border-color: rgba(255,107,71,0.35); }
+
+.rpt-card-icon { font-size: 36px; line-height: 1; }
+
+.rpt-card-body { flex: 1; }
+
+.rpt-card-title {
+    font-size: 18px; font-weight: 400 !important;
+    letter-spacing: -0.02em; margin-bottom: 8px;
+}
+
+.rpt-card-desc {
+    font-size: 11px;
+    color: var(--muted); letter-spacing: 0.04em; line-height: 1.7;
+}
+
+.rpt-card-footer { margin-top: auto; }
+
+.rpt-btn {
+    display: block; width: 100%;
+    padding: 12px 16px; border-radius: 10px;
+    font-size: 13px; font-weight: 400 !important;
+    text-align: center; letter-spacing: 0.02em;
+    transition: all 0.2s;
+}
+
+.rpt-btn-sales {
+    background: rgba(71,200,255,0.12);
+    border: 1px solid rgba(71,200,255,0.3);
+    color: var(--accent2);
+}
+.rpt-sales:hover .rpt-btn-sales {
+    background: rgba(71,200,255,0.22);
+    border-color: var(--accent2);
+}
+
+.rpt-btn-inventory {
+    background: rgba(71,255,138,0.10);
+    border: 1px solid rgba(71,255,138,0.3);
+    color: var(--accent4);
+}
+.rpt-inventory:hover .rpt-btn-inventory {
+    background: rgba(71,255,138,0.2);
+    border-color: var(--accent4);
+}
+
+.rpt-btn-supplier {
+    background: rgba(255,107,71,0.10);
+    border: 1px solid rgba(255,107,71,0.3);
+    color: var(--accent3);
+}
+.rpt-supplier:hover .rpt-btn-supplier {
+    background: rgba(255,107,71,0.2);
+    border-color: var(--accent3);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) { .rpt-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .rpt-title { font-size: 24px; } }

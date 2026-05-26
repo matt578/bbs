@@ -1,0 +1,81 @@
+/* sales_orders.css - Bohol Bicycle themed */
+
+/* layout */
+:root{
+  --brand:#1e88e5;
+  --muted:#8b97a6;
+  --bg:#f7f8fa;
+  --card:#ffffff;
+  --accent:#f1f7ff;
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:#222}
+
+/* app shell */
+.app-shell{display:flex;min-height:100vh}
+
+/* sidebar */
+.sidebar{
+  width:220px;
+  background:#fff;
+  border-right:1px solid #eee;
+  padding:24px 18px;
+}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.brand img{width:44px;height:auto}
+.brand-text strong{color:var(--brand);font-size:18px;display:block}
+.brand-text small{color:var(--muted);font-size:12px}
+
+/* nav */
+.nav{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.nav a{padding:10px 12px;border-radius:8px;color:#2c3e50;text-decoration:none}
+.nav a.active{background:var(--accent);color:var(--brand);font-weight:600}
+.nav a:hover{background:#fbfdff}
+
+/* main */
+.main{flex:1;padding:20px 32px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.search input{padding:10px 12px;border-radius:8px;border:1px solid #ddd;width:360px}
+.search button{margin-left:8px;padding:10px 12px;border-radius:8px;border:1px solid #d0d7df;background:#fff}
+.btn-primary{background:var(--brand);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none}
+
+/* page title */
+.page h1{font-size:28px;margin:6px 0 18px}
+
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+
+/* card */
+.card{background:var(--card);border-radius:8px;padding:16px;border:1px solid #ececec}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.card-header h3{margin:0}
+
+/* table */
+.table-wrap{overflow:auto}
+.orders-table{width:100%;border-collapse:collapse;font-size:14px}
+.orders-table thead th{background:#fbfdff;padding:12px 14px;text-align:left;border-bottom:1px solid #eee;color:#333}
+.orders-table tbody td{padding:14px;border-bottom:1px solid #f0f0f0;vertical-align:middle}
+.orders-table tbody tr:hover{background:#fbfbfb}
+.orders-table td.center{text-align:center}
+.orders-table td.right{text-align:right}
+.link{color:var(--brand);text-decoration:none}
+
+/* small cards in right column */
+.right-col .card.small{margin-bottom:12px;padding:14px}
+
+/* quick actions buttons */
+.btn-outline{display:block;padding:10px;border-radius:8px;border:1px solid #dde6f0;background:#fff;text-decoration:none;color:#2c3e50;margin-bottom:8px;text-align:center}
+.simple-list{list-style:none;padding:0;margin:0}
+.simple-list li{padding:6px 0;border-bottom:1px solid #f4f5f6;color:#4d5560}
+
+/* footer */
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.pagination .page{display:inline-block;padding:6px 10px;border-radius:6px;margin-right:6px;background:#fff;border:1px solid #ecf0f6}
+
+/* responsive */
+@media (max-width: 900px){
+  .grid{grid-template-columns:1fr; padding-bottom: 40px}
+  .sidebar{display:none}
+  .search input{width:60%}
+}

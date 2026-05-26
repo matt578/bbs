@@ -1,0 +1,293 @@
+/* ============================================================
+   POS.CSS — CLEAN REWRITE (RIGHT PANEL PROTECTED)
+   ============================================================ */
+
+/* =========================
+   PAGE
+========================= */
+.page-shell {
+    padding: 28px 34px 34px;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   HERO (MATCH DASHBOARD)
+========================= */
+.hero-card {
+    background: linear-gradient(135deg, #0f1628, #141f3a);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 18px;
+
+    padding: 26px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 22px;
+}
+
+.hero-left h1 {
+    font-size: 38px;
+    font-weight: 400;
+    color: #f3f6ff;
+}
+
+.hero-left p {
+    font-size: 14px;
+    color: #7f8aa3;
+}
+
+.hero-eyebrow {
+    color: #47c8ff;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.hero-right {
+    text-align: right;
+}
+
+.hero-right span {
+    font-size: 11px;
+    color: #6f7995;
+}
+
+.hero-right strong {
+    font-size: 20px;
+    color: #f1f4fb;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+.main-card {
+    background: #141720;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+/* =========================
+   TOOLBAR (FIXED)
+========================= */
+.card-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.card-toolbar h3 {
+    font-size: 18px;
+    color: #f1f4fb;
+}
+
+.card-toolbar small {
+    color: #6f7995;
+    font-size: 13px;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* =========================
+   INPUT
+========================= */
+.sys-input {
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #1c2030;
+    color: #f2f6ff;
+    padding: 0 14px;
+}
+
+.barcode-input {
+    width: 260px;
+}
+
+/* =========================
+   BUTTONS (SAFE)
+========================= */
+.btn-primary-solid {
+    background: #e8ff47;
+    color: #10151f;
+    border-radius: 10px;
+    height: 42px;
+    padding: 0 16px;
+}
+
+.btn-outline-soft {
+    background: #1c2030;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #e7eeff;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 10px;
+}
+
+/* =========================
+   LAYOUT (IMPORTANT FIX)
+========================= */
+.pos-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* =========================
+   TABLE
+========================= */
+.sys-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sys-table thead th {
+    color: #6d7691;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.sys-table tbody td {
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: #edf1fb;
+}
+
+.sys-table tbody tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* =========================
+   TAG + QTY
+========================= */
+.tag-blue {
+    background: rgba(71,200,255,0.15);
+    border: 1px solid rgba(71,200,255,0.25);
+    color: #6cd3ff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+}
+
+.qty-pill {
+    background: #1c2030;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty-state {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.empty-icon {
+    font-size: 30px;
+}
+
+.empty-title {
+    color: #eef3fd;
+}
+
+.empty-sub {
+    color: #747d97;
+}
+
+/* ============================================================
+   🚨 RIGHT PANEL — FULLY PRESERVED (NO CHANGE)
+   ============================================================ */
+
+/* KEEP YOUR ORIGINAL DESIGN EXACTLY */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* DO NOT MODIFY BELOW */
+.summary-box,
+.change-box {
+    background: rgba(30, 52, 114, 0.55);
+    border: 1px solid rgba(86, 146, 255, 0.18);
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.summary-box span,
+.change-box span,
+.field-label {
+    display: block;
+    color: #83b3ff;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.summary-box strong,
+.change-box strong {
+    display: block;
+    color: #f4f8ff;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-success-solid {
+    background: linear-gradient(180deg, #38b86b, #2c9a59);
+    color: #fff;
+    border-radius: 14px;
+    height: 44px;
+}
+
+.btn-danger-soft {
+    background: rgba(255, 98, 98, 0.08);
+    color: #ff9797;
+    border: 1px solid rgba(255, 98, 98, 0.18);
+    border-radius: 14px;
+    height: 44px;
+}
+
+.mini-stats {
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 16px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1000px) {
+    .pos-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .barcode-input {
+        width: 100%;
+    }
+}

@@ -1,0 +1,371 @@
+/* ============================================================
+   INVENTORY.CSS — Bohol Bicycle Inventory
+   Normal font, no bold, same layout/design
+   ============================================================ */
+
+:root {
+    --bg:      #0d0f14;
+    --surface: #141720;
+    --surface2:#1c2030;
+    --border:  rgba(255,255,255,0.07);
+    --accent:  #e8ff47;
+    --accent2: #47c8ff;
+    --accent3: #ff6b47;
+    --accent4: #47ff8a;
+    --text:    #f0f2f7;
+    --muted:   #6b7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, body * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-top: 70px;
+}
+    
+body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+}
+
+/* ── WRAPPER ── */
+.inv-wrapper {
+    position: relative; z-index: 1;
+    width: 100%; padding: 2rem 2rem 3rem;
+}
+
+/* ── PAGE HEADER ── */
+.inv-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    background: linear-gradient(135deg, #0f1628 0%, #141f3a 100%);
+    border: 1px solid rgba(71,200,255,0.15);
+    border-radius: 16px; padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.inv-eyebrow {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 6px;
+}
+
+.inv-title {
+    font-size: 30px;
+    letter-spacing: -0.03em; line-height: 1; color: var(--text);
+    font-weight: 400 !important;
+}
+
+.inv-header small {
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 5px; display: block;
+}
+
+.inv-header-right { text-align: right; }
+
+.inv-date-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px;
+}
+
+.inv-date-value {
+    font-size: 18px;
+    letter-spacing: -0.02em; color: var(--text);
+    font-weight: 400 !important;
+}
+
+/* ── EARNINGS GRID ── */
+.earn-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-bottom: 1.25rem;
+}
+
+/* ── EARNINGS CARD ── */
+.earn-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem 1.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    animation: fadeUp 0.5s ease both;
+}
+.earn-card:nth-child(1) { animation-delay: 0.05s; }
+.earn-card:nth-child(2) { animation-delay: 0.10s; }
+.earn-card:nth-child(3) { animation-delay: 0.15s; }
+.earn-card:nth-child(4) { animation-delay: 0.20s; }
+
+.earn-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.13); }
+
+.earn-card::before {
+    content: ''; position: absolute;
+    top: 0; right: 0; width: 80px; height: 80px;
+    border-radius: 50%; filter: blur(30px); opacity: 0.5;
+}
+.earn-s1::before { background: var(--accent2); }
+.earn-s2::before { background: var(--accent4); }
+.earn-s3::before { background: #b347ff; }
+.earn-s4::before { background: var(--accent3); }
+
+.earn-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.earn-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted);
+}
+
+.earn-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: #0d0f14;
+}
+
+.earn-s1 .earn-icon { background: var(--accent2); }
+.earn-s2 .earn-icon { background: var(--accent4); }
+.earn-s3 .earn-icon { background: #b347ff; color: #fff; }
+.earn-s4 .earn-icon { background: var(--accent3); }
+
+.earn-value {
+    font-size: 22px;
+    letter-spacing: -0.03em; color: var(--text);
+    font-weight: 400 !important;
+}
+
+/* ── PRODUCT LIST CARD ── */
+.inv-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    animation: fadeUp 0.5s 0.25s ease both;
+}
+
+/* ── TOOLBAR ── */
+.inv-toolbar {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.inv-card-title {
+    font-size: 17px; letter-spacing: -0.01em;
+    font-weight: 400 !important;
+}
+
+.inv-card-sub {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 4px;
+}
+
+.inv-card-sub span {
+    color: var(--accent);
+    font-weight: 400 !important;
+}
+
+.inv-toolbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.inv-search {
+    height: 42px; padding: 0 14px; min-width: 260px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: var(--text);
+    font-size: 13px;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+    font-weight: 400 !important;
+}
+.inv-search::placeholder { color: #4b5563; }
+.inv-search:focus { border-color: rgba(232,255,71,0.5); background: rgba(232,255,71,0.03); }
+
+.btn-add-product {
+    height: 42px; padding: 0 20px;
+    border-radius: 10px; border: none;
+    background: var(--accent); color: #0d0f14;
+    font-size: 13px; letter-spacing: 0.02em;
+    cursor: pointer; text-decoration: none;
+    display: flex; align-items: center; white-space: nowrap;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(232,255,71,0.2);
+    font-weight: 400 !important;
+}
+.btn-add-product:hover {
+    background: #d4eb30; color: #0d0f14;
+    transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,255,71,0.3);
+}
+
+/* ── DIVIDER ── */
+.inv-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+/* ── TABLE ── */
+.inv-table-wrap { overflow-x: auto; }
+
+.inv-table { width: 100%; border-collapse: collapse; }
+
+.inv-table thead th {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); padding: 10px 1rem;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap; text-align: left;
+    font-weight: 400 !important;
+}
+.inv-table thead th.text-right  { text-align: right; }
+.inv-table thead th.text-center { text-align: center; }
+
+.inv-table tbody td {
+    padding: 13px 1rem; font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle; color: var(--text);
+    font-weight: 400 !important;
+}
+.inv-table tbody td.text-right  { text-align: right; }
+.inv-table tbody td.text-center { text-align: center; }
+.inv-table tbody tr:last-child td { border-bottom: none; }
+.inv-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.td-barcode {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
+}
+
+.td-name  { font-weight: 400 !important; }
+
+.td-price {
+    color: var(--accent2);
+    font-weight: 400 !important;
+}
+
+/* Product image */
+.table-img {
+    width: 60px; height: 48px;
+    object-fit: cover; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+}
+
+.img-placeholder {
+    width: 60px; height: 48px; border-radius: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 18px;
+}
+
+/* Category pill */
+.cat-pill {
+    display: inline-block;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 10px; letter-spacing: 0.05em;
+    background: rgba(71,200,255,0.1);
+    border: 1px solid rgba(71,200,255,0.2);
+    color: var(--accent2);
+    font-weight: 400 !important;
+}
+
+/* Qty badge */
+.qty-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text);
+    font-size: 12px;
+    padding: 3px 12px; border-radius: 20px;
+    font-weight: 400 !important;
+}
+
+/* Action buttons */
+.action-btns { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+
+.icon-btn {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: var(--muted); transition: all 0.2s;
+}
+
+.icon-edit:hover {
+    background: rgba(232,255,71,0.1);
+    border-color: rgba(232,255,71,0.35);
+    color: var(--accent);
+}
+
+.icon-archive:hover {
+    background: rgba(255,107,71,0.1);
+    border-color: rgba(255,107,71,0.35);
+    color: var(--accent3);
+}
+
+/* Empty state */
+.td-empty { text-align: center !important; padding: 3.5rem 1rem !important; }
+.empty-icon { font-size: 32px; opacity: 0.2; display: block; margin-bottom: 10px; }
+.empty-text { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+    .earn-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .earn-grid { grid-template-columns: 1fr; }
+    .inv-toolbar { flex-direction: column; }
+}
+/* =========================
+   FINAL FONT FORCE OVERRIDE
+   Put this at the VERY BOTTOM
+   ========================= */
+
+html,
+body,
+body *,
+body *::before,
+body *::after,
+input,
+button,
+select,
+textarea,
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+a,
+span,
+small,
+label,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+}
+
+b,
+strong {
+    font-weight: 400 !important;
+}
